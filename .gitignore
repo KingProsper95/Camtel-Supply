@@ -1,0 +1,98 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+*$py.class
+__pycache__/
+*.so
+*.egg
+*.egg-info/
+.eggs/
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+live-static-files/
+
+# If you are using Django migrations, you might also want to ignore:
+migrations/
+# but you might want to keep __init__.py in migration folders to ensure Python imports work correctly.
+!*/migrations/__init__.py
+
+# Environment variables
+.env
+.env.*
+
+# If you are using virtualenv:
+.env/
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+.history/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Backup files
+*.bak
+*.swp
+*~
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Celery beat schedule file
+celerybeat-schedule
+
+# Sphinx documentation
+docs/_build/
+
+# PyInstaller
+*.manifest
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Ignore node_modules if you use frontend assets managed by npm or yarn
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
