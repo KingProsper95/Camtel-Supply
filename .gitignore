@@ -43,6 +43,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Pipenv files
 Pipfile
 Pipfile.lock
 
