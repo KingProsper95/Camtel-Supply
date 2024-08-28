@@ -8,6 +8,3 @@ class ProductIndex(AlgoliaIndex):
         'name',
         'category'
     ]
-    """ settings = {
-        'searchableAttributes' : ['title', 'content'],
-    } """

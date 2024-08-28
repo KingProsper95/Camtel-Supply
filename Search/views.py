@@ -7,7 +7,8 @@ from rest_framework.response import Response
 
 from . import client
 # Create your views here.
-class SearchListView(generics.GenericAPIView):
+
+class SearchProductListView(generics.GenericAPIView):
     def get(self, request, *args, **kwargs):
         query = request.GET.get('q')
         if not query:
