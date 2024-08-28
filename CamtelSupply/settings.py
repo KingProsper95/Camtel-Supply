@@ -37,10 +37,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework",
-    "CamtelSupplyAPI",
+    #third party api's
+    "algoliasearch_django",
+    #third party packages
     "debug_toolbar",
-    "rest_framework.authtoken"
+    "rest_framework.authtoken",
+    "rest_framework",
+    #internal apps
+    "CamtelSupplyAPI",
+    "Search",
 ]
 
 MIDDLEWARE = [
@@ -138,5 +143,13 @@ REST_FRAMEWORK = {
     ],
     "DEFAULT_PERMISSION_CLASSES" : [
         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
-    ]
+    ],
+    "DEFAULT_PAGINATION_CLASS" : "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE" : 10
+}
+
+ALGOLIA = {
+    'APPLICATION_ID': 'BEXJ76UD9U',
+    'API_KEY': '2a1c84020efe1e2bd57a199539a87dfd',
+    'INDEX_PREFIX': 'cfe'
 }
