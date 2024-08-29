@@ -1,15 +1,34 @@
 from django.urls import path
 from rest_framework.authtoken.views import obtain_auth_token
-from . import views
+
+# importing all views
+from .views.categoryView import *
+from .views.entityView import *
+from .views.productView import *
+from .views.supplierView import *
+from .views.orderView import *
+
 
 urlpatterns = [
+
+    #authentication
     path('auth/', obtain_auth_token),
-    path('category/', views.CategoryView.as_view()),
-    path('category/<int:pk>', views.SingleCategoryView.as_view()),
-    path('products/', views.ProductView.as_view()),
-    path('products/<int:pk>', views.SingleProductView.as_view(), name='product-detail'),
-    path('suppliers/', views.SupplierView.as_view()),
-    path('suppliers/<int:pk>', views.SingleSupplierView.as_view()),
-    path('entity/', views.EntityView.as_view()),
-    path('entity/<int:pk>', views.SingleEntityView.as_view()),
+
+    #category urls
+    path('category/', CategoryView.as_view()),
+    path('category/<int:pk>', SingleCategoryView.as_view()),
+
+    #product urls
+    path('products/', ProductView.as_view()),
+    path('products/<int:pk>', SingleProductView.as_view(), name='product-detail'),
+
+    #entity urls
+    path('entity/', EntityView.as_view()),
+    path('entity/<int:pk>', SingleEntityView.as_view()),
+
+    #supplier urls
+    path('suppliers/', SupplierView.as_view()),
+    path('suppliers/<int:pk>', SingleSupplierView.as_view()),
+
+
 ]
