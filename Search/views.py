@@ -14,7 +14,7 @@ class SearchListView(generics.GenericAPIView):
         if request.user.is_authenticated:
             query = request.GET.get('q')
             if not query:
-                return Response('', status=400)
+                return Response('', status.HTTP_400_BAD_REQUEST)
             results = client.perform_search(query)
             print(request.user.is_authenticated)
             return Response(results)

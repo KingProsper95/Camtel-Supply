@@ -8,6 +8,8 @@ django = "*"
 djangorestframework = "*"
 django-debug-toolbar = "*"
 algoliasearch-django = "*"
+djangorestframework-simplejwt = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
