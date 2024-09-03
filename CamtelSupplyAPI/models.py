@@ -42,9 +42,9 @@ class Order(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 
-# class OrderDetails(models.Model):
-#     order = models.ForeignKey(Order, on_delete=models.PROTECT)
-#     product = models.ForeignKey(Product, on_delete=models.PROTECT)
-#     quantity = models.IntegerField(validators=[MinValueValidator(1)])
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
+class OrderDetails(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.PROTECT, default=1)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT, default=1)
+    quantity = models.IntegerField(validators=[MinValueValidator(1)])
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

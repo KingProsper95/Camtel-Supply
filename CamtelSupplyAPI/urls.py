@@ -8,6 +8,7 @@ from .views.entityView import *
 from .views.productView import *
 from .views.supplierView import *
 from .views.orderView import *
+from .views.orderDetailsView import *
 
 
 urlpatterns = [
@@ -32,11 +33,15 @@ urlpatterns = [
 
     #supplier urls
     path('suppliers/', SupplierView.as_view()),
-    path('supplier/<int:pk>', SingleSupplierView.as_view()),
+    path('supplier/<int:pk>', SingleSupplierView.as_view(), name='supplier-detail'),
 
     #order urls
     path('orders/', OrderView.as_view()),
     path('order/<int:pk>', SingleOrderView.as_view(), name='order-detail'),
+
+    #order details urls
+    path('order-details/', OrderDetailsView.as_view()),
+    path('order-details/<int:pk>', SingleOrderDetailsView.as_view(), name='orderDetails-detail'),
 
 
 ]

@@ -27,7 +27,7 @@ class OrderSerializer(serializers.ModelSerializer):
             order = Order.objects.create(entity=query.first(), **validated_data)
             return order
         else:
-            raise serializers.ValidationError(f"{client} not found")
+            raise serializers.ValidationError(f"Entity with name '{client}' does not exist")
 
     def update(self, instance, validated_data):
         instance.status = validated_data.get('status')
