@@ -1,5 +1,6 @@
 from django.db import models
 from .validators import validate_cameroonian_phone_number
+from django.core.validators import MinValueValidator
 
 # Create your models here.
 class Category(models.Model):
@@ -34,4 +35,16 @@ class Entity(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
 class Order(models.Model):
-    pass
+    entity = models.ForeignKey(Entity, on_delete=models.PROTECT, default=1)
+    status = models.CharField(max_length=255)
+    date = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class OrderDetails(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.PROTECT, default=1)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT, default=1)
+    quantity = models.IntegerField(validators=[MinValueValidator(1)])
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

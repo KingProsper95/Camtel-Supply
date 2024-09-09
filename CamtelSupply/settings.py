@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import datetime
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -43,6 +44,8 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "rest_framework.authtoken",
     "rest_framework",
+    "rest_framework_simplejwt",
+    "corsheaders",
     #internal apps
     "CamtelSupplyAPI",
     "Search",
@@ -51,6 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -58,6 +62,15 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware"
 ]
+
+CORS_URLS_REGEX = r"^/api/.*"
+
+CORS_ALLOWED_ORIGINS = []
+
+if DEBUG:
+    CORS_ALLOWED_ORIGINS += [
+        "http://127.0.0.1:5500"
+    ]
 
 ROOT_URLCONF = "CamtelSupply.urls"
 
@@ -138,8 +151,7 @@ INTERNAL_IPS = [
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES" : [
-        "rest_framework.authentication.SessionAuthentication",
-        "CamtelSupplyAPI.authentication.TokenAuthentication"
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES" : [
         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
@@ -152,4 +164,10 @@ ALGOLIA = {
     'APPLICATION_ID': 'BEXJ76UD9U',
     'API_KEY': '2a1c84020efe1e2bd57a199539a87dfd',
     'INDEX_PREFIX': 'cfe'
+}
+
+SIMPLE_JWT = {
+    "AUTH_HEADER_TYPES" : ['Bearer'],
+    "ACCESS_TOKEN_LIFETIME": datetime.timedelta(minutes=20),
+    "REFRESH_TOKEN_LIFETIME": datetime.timedelta(days=10)
 }
