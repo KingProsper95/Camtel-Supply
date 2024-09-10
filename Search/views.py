@@ -13,11 +13,15 @@ class SearchListView(generics.GenericAPIView):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             query = request.GET.get('q')
-            if not query:
-                return Response('', status.HTTP_400_BAD_REQUEST)
-            results = client.perform_search(query)
+            index_name = request.GET.get('index')
+            if not query or not index_name:
+                return Response({"status":"invalid params"}, status.HTTP_400_BAD_REQUEST)
+            results = client.perform_search(query, index_name)
             print(request.user.is_authenticated)
             return Response(results)
         return Response({"status" : "Can't perform this search you are not authenticated"},
                         status.HTTP_401_UNAUTHORIZED
                         )
+    
+
+
