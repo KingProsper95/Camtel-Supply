@@ -157,7 +157,7 @@ REST_FRAMEWORK = {
         "rest_framework.permissions.IsAuthenticatedOrReadOnly",
     ],
     "DEFAULT_PAGINATION_CLASS" : "rest_framework.pagination.LimitOffsetPagination",
-    "PAGE_SIZE" : 10
+    "PAGE_SIZE" : 8
 }
 
 ALGOLIA = {
@@ -168,6 +168,6 @@ ALGOLIA = {
 
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES" : ['Bearer'],
-    "ACCESS_TOKEN_LIFETIME": datetime.timedelta(minutes=20),
+    "ACCESS_TOKEN_LIFETIME": datetime.timedelta(weeks=1),
     "REFRESH_TOKEN_LIFETIME": datetime.timedelta(days=10)
 }

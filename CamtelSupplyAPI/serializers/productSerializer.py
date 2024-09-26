@@ -39,6 +39,6 @@ class ProductSerializer(serializers.ModelSerializer):
             instance.save()
         else:
             raise serializers.ValidationError(
-            f'\'{category_name}\' not found'
+            {"detail" : f"'{category_name}' not found"}
             )
         return instance
